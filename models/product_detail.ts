@@ -1,15 +1,15 @@
 import { model, Schema, SchemaType, SchemaTypes, Types } from "mongoose";
 
 export interface IProductDetail extends Document{
-    productName: Types.ObjectId,
+    product: Types.ObjectId,
     quantity: Number,
     price: Number
 }
 
-const productDetailSchema = new Schema(
+const productDetailSchema = new Schema<IProductDetail>(
     {
         product: {
-            type: SchemaTypes.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "Product"
         },
         quantity: {
@@ -23,4 +23,4 @@ const productDetailSchema = new Schema(
     }
 )
 
-export default model("Product Detail", productDetailSchema)
+export default model<IProductDetail>("Product Detail", productDetailSchema)
