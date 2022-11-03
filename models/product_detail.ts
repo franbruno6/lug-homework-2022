@@ -3,7 +3,8 @@ import { model, Schema, SchemaType, SchemaTypes, Types } from "mongoose";
 export interface IProductDetail extends Document{
     product: Types.ObjectId,
     quantity: Number,
-    price: Number
+    price: Number,
+    total: Number
 }
 
 const productDetailSchema = new Schema<IProductDetail>(
@@ -14,12 +15,20 @@ const productDetailSchema = new Schema<IProductDetail>(
         },
         quantity: {
             type: Number,
-            require: true
+            require: true,
+            min: [1, 'Quantity can not be less than 1.']
         },
         price: {
             type: Number,
             require: true
+        },
+        total: {
+            type: Number,
+            require: true
         }
+    },
+    {
+        timestamps: true
     }
 )
 

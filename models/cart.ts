@@ -1,17 +1,23 @@
 import { model, Schema, Types } from "mongoose";
+import productDetail from "./product_detail";
 
 export interface ICart extends Document{
-    productDetails: Types.ObjectId[]
+    productDetails: [],
+    subTotal: Number
 }
 
 const cartSchema = new Schema<ICart>(
     {
        productDetails: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Product_Detail"
-        }
-       ] 
+        productDetail
+       ],
+       subTotal: {
+            type: Number,
+            default: 0
+       }
+    },
+    {
+        timestamps: true
     }
 )
 

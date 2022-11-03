@@ -22,7 +22,7 @@ const productSchema = new Schema<IProduct>(
             require: true
         },
         provider: {
-            type: SchemaTypes.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: "Provider"
         }
     }
