@@ -1,13 +1,7 @@
-import { model, Schema, SchemaTypes, Types } from "mongoose";
+import { model, Schema, SchemaTypes, Types, Document } from "mongoose";
 
-export interface IProduct extends Document{
-  name: String,
-  price: Number,
-  stock: Number,
-  provider: Types.ObjectId
-}
 
-const productSchema = new Schema<IProduct>(
+const productSchema = new Schema(
     {
         name: {
             type: String,
@@ -28,4 +22,4 @@ const productSchema = new Schema<IProduct>(
     }
 )
 
-export default model<IProduct>("Product", productSchema);
+export default model("Product", productSchema);

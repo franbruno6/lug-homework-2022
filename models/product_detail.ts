@@ -1,13 +1,7 @@
-import { model, Schema, SchemaType, SchemaTypes, Types } from "mongoose";
+import { model, Schema, SchemaType, SchemaTypes, Types, Document } from "mongoose";
 
-export interface IProductDetail extends Document{
-    product: Types.ObjectId,
-    quantity: Number,
-    price: Number,
-    total: Number
-}
 
-const productDetailSchema = new Schema<IProductDetail>(
+const productDetailSchema = new Schema(
     {
         product: {
             type: Schema.Types.ObjectId,
@@ -15,14 +9,13 @@ const productDetailSchema = new Schema<IProductDetail>(
         },
         quantity: {
             type: Number,
-            require: true,
-            min: [1, 'Quantity can not be less than 1.']
+            require: true
         },
         price: {
             type: Number,
             require: true
         },
-        total: {
+        subTotal: {
             type: Number,
             require: true
         }
@@ -32,4 +25,4 @@ const productDetailSchema = new Schema<IProductDetail>(
     }
 )
 
-export default model<IProductDetail>("Product Detail", productDetailSchema)
+export default model("Product_Detail", productDetailSchema)

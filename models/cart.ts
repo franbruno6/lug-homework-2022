@@ -1,17 +1,14 @@
-import { model, Schema, Types } from "mongoose";
+import { model, Schema, Types, Document } from "mongoose";
 import productDetail from "./product_detail";
 
-export interface ICart extends Document{
-    productDetails: [],
-    subTotal: Number
-}
 
-const cartSchema = new Schema<ICart>(
+const cartSchema = new Schema(
     {
-       productDetails: [
-        productDetail
-       ],
-       subTotal: {
+       productDetails: [{
+            type: Schema.Types.ObjectId,
+            ref: "Product_Detail"
+       }],
+       total: {
             type: Number,
             default: 0
        }
@@ -21,4 +18,4 @@ const cartSchema = new Schema<ICart>(
     }
 )
 
-export default model<ICart>("Model" , cartSchema)
+export default model("Model" , cartSchema)
